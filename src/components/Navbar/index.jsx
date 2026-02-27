@@ -5,6 +5,7 @@ import BottomNav from '../../components/Bottomnav';
 import MobileDrawer from '../../components/Mobiledrawer';
 import { socials } from '../navbarData';
 
+
 const keyframes = `
   @keyframes nb_slideDown {
     from { transform: translateY(-100%); opacity: 0; }
