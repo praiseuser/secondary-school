@@ -9,14 +9,11 @@ import AcademicsPage from '../pages/Academics';
 // import NewsPage       from '../pages/News';
 // import ContactPage    from '../pages/Contact';
 
-// About sub-tabs
-import HistoryTab from '../pages/About/HistoryTab';
-import VisionTab from '../pages/About/VisionTab';
-import CoreValuesTab from '../pages/About/CoreValuesTab';
-import StaffTab from '../pages/About/StaffTab';
-import FacilitiesTab from '../pages/About/FacilitiesTab';
 
-// Academics sub-pages
+import HistoryTab from '../pages/About/Historytab';
+import VisionTab from '../pages/About/Visiontab';
+import StaffTab from '../pages/About/Stafftab';
+import FacilitiesTab from '../pages/About/Facilitiestab';
 import CurriculumPage from '../pages/Academics/CurriculumPage';
 import JuniorSecondaryPage from '../pages/Academics/JuniorSecondaryPage';
 import SeniorSecondaryPage from '../pages/Academics/SeniorSecondaryPage';
@@ -37,7 +34,6 @@ const AppRoutes = () => {
                         <Route index element={<Navigate to="history" replace />} />
                         <Route path="history" element={<HistoryTab />} />
                         <Route path="vision" element={<VisionTab />} />
-                        <Route path="values" element={<CoreValuesTab />} />
                         <Route path="staff" element={<StaffTab />} />
                         <Route path="facilities" element={<FacilitiesTab />} />
                     </Route>
