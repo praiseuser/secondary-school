@@ -14,11 +14,11 @@ import HistoryTab from '../pages/About/Historytab';
 import VisionTab from '../pages/About/Visiontab';
 import StaffTab from '../pages/About/Stafftab';
 import FacilitiesTab from '../pages/About/Facilitiestab';
-import CurriculumPage from '../pages/Academics/CurriculumPage';
-import JuniorSecondaryPage from '../pages/Academics/JuniorSecondaryPage';
-import SeniorSecondaryPage from '../pages/Academics/SeniorSecondaryPage';
-import SubjectListPage from '../pages/Academics/SubjectListPage';
-import AcademicCalendarPage from '../pages/Academics/AcademicCalendarPage';
+import CurriculumPage from '../pages/Academics/Curriculumpage';
+import JuniorSecondaryPage from '../pages/Academics/Juniorsecondarypage';
+import SeniorSecondaryPage from '../pages/Academics/Seniorsecondarypage';
+import SubjectListPage from '../pages/Academics/Subjectlistpage';
+import AcademicCalendarPage from '../pages/Academics/Academiccalendarpage';
 
 const AppRoutes = () => {
     return (
