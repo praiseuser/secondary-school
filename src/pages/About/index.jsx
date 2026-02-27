@@ -1,6 +1,6 @@
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
-import AboutHero from './AboutHero';
+import AboutHero from '../About/Abouthero';
 
 const keyframes = `
   @keyframes tab_fadeIn {
