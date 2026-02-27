@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import TopBar from '../../components/Topbar';
 import BottomNav from '../../components/Bottomnav';
 import MobileDrawer from '../../components/Mobiledrawer';
-import { socials } from '../navbarData';
+import { socials } from '../../components/navbarData';
 
 
 const keyframes = `
