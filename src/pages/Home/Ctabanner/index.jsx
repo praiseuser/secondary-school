@@ -6,6 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GroupsIcon from '@mui/icons-material/Groups';
 import StarIcon from '@mui/icons-material/Star';
+import { useNavigate } from 'react-router-dom'; 
 import { colors, typography } from '../../../theme';
 
 // ── Keyframes
@@ -61,6 +62,7 @@ const miniStats = [
 const CTABanner = () => {
     const [visible, setVisible] = useState(false);
     const ref = useRef(null);
+    const navigate = useNavigate();   // ← added
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -83,89 +85,61 @@ const CTABanner = () => {
                     bgcolor: colors.primary.dark,
                 }}
             >
-                {/* ══════════════════════════
-            DECORATIVE BG ELEMENTS
-            ══════════════════════════ */}
-
-                {/* Large spinning ring — top right */}
+                {/* Decorative spinning rings */}
                 <Box sx={{
-                    position: 'absolute',
-                    top: -120, right: -120,
-                    width: 500, height: 500,
-                    borderRadius: '50%',
+                    position: 'absolute', top: -120, right: -120,
+                    width: 500, height: 500, borderRadius: '50%',
                     border: `1px solid ${colors.secondary.main}18`,
                     animation: 'cta_spinSlow 30s linear infinite',
-                    pointerEvents: 'none',
-                    zIndex: 0,
+                    pointerEvents: 'none', zIndex: 0,
                 }} />
                 <Box sx={{
-                    position: 'absolute',
-                    top: -60, right: -60,
-                    width: 360, height: 360,
-                    borderRadius: '50%',
+                    position: 'absolute', top: -60, right: -60,
+                    width: 360, height: 360, borderRadius: '50%',
                     border: `1px solid ${colors.secondary.main}10`,
                     animation: 'cta_spinSlow 20s linear infinite reverse',
-                    pointerEvents: 'none',
-                    zIndex: 0,
+                    pointerEvents: 'none', zIndex: 0,
                 }} />
 
-                {/* Bottom left glow blob */}
+                {/* Bottom left glow */}
                 <Box sx={{
-                    position: 'absolute',
-                    bottom: -100, left: -80,
-                    width: 400, height: 400,
-                    borderRadius: '50%',
-                    bgcolor: colors.primary.main,
-                    opacity: 0.25,
-                    filter: 'blur(60px)',
-                    pointerEvents: 'none',
-                    zIndex: 0,
+                    position: 'absolute', bottom: -100, left: -80,
+                    width: 400, height: 400, borderRadius: '50%',
+                    bgcolor: colors.primary.main, opacity: 0.25,
+                    filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
                 }} />
 
                 {/* Faded BG word */}
                 <Typography sx={{
-                    position: 'absolute',
-                    top: '50%', left: '50%',
+                    position: 'absolute', top: '50%', left: '50%',
                     transform: 'translate(-50%, -50%)',
                     fontFamily: typography.fontFamily.accent,
                     fontSize: { xs: '10rem', md: '18rem' },
                     fontWeight: typography.fontWeight.black,
-                    color: colors.primary.light,
-                    opacity: 0.04,
-                    whiteSpace: 'nowrap',
-                    userSelect: 'none',
-                    pointerEvents: 'none',
-                    zIndex: 0,
-                    lineHeight: 1,
+                    color: colors.primary.light, opacity: 0.04,
+                    whiteSpace: 'nowrap', userSelect: 'none',
+                    pointerEvents: 'none', zIndex: 0, lineHeight: 1,
                 }}>
                     ADMISSIONS
                 </Typography>
 
-                {/* ══════════════════════════
-            TOP MINI STATS BAR
-            ══════════════════════════ */}
+                {/* Top shimmer bar */}
                 <Box sx={{
                     bgcolor: colors.primary.main,
                     borderBottom: `1px solid rgba(255,255,255,0.06)`,
-                    py: 1.5,
-                    position: 'relative',
-                    zIndex: 1,
+                    py: 1.5, position: 'relative', zIndex: 1,
                     '&::before': {
                         content: '""',
-                        position: 'absolute',
-                        top: 0, left: 0, right: 0,
-                        height: 2,
+                        position: 'absolute', top: 0, left: 0, right: 0, height: 2,
                         background: `linear-gradient(90deg, transparent, ${colors.secondary.main}, ${colors.secondary.light}, ${colors.secondary.main}, transparent)`,
                         backgroundSize: '600px 100%',
                         animation: 'cta_shimmer 3s linear infinite',
                     },
-                }}>
-                </Box>
+                }} />
+
                 <Box sx={{
-                    position: 'relative',
-                    zIndex: 1,
-                    maxWidth: 1400,
-                    mx: 'auto',
+                    position: 'relative', zIndex: 1,
+                    maxWidth: 1400, mx: 'auto',
                     px: { xs: 3, md: 6 },
                     py: { xs: 8, md: 12 },
                 }}>
@@ -176,7 +150,7 @@ const CTABanner = () => {
                         alignItems: 'center',
                     }}>
 
-                        {/* ── LEFT: Main message */}
+                        {/* LEFT: Main message */}
                         <Box sx={{ animation: visible ? 'cta_fadeUp 0.8s ease 0.1s both' : 'none' }}>
 
                             {/* Label */}
@@ -187,42 +161,35 @@ const CTABanner = () => {
                                     fontSize: typography.fontSize.xs,
                                     fontWeight: typography.fontWeight.bold,
                                     color: colors.secondary.main,
-                                    letterSpacing: 3,
-                                    textTransform: 'uppercase',
+                                    letterSpacing: 3, textTransform: 'uppercase',
                                 }}>
                                     Admissions Open — 2026/2027
                                 </Typography>
                             </Stack>
 
-                            {/* Big heading */}
+                            {/* Heading */}
                             <Typography sx={{
                                 fontFamily: typography.fontFamily.accent,
                                 fontSize: { xs: typography.fontSize['3xl'], md: '3.2rem', lg: '3.8rem' },
                                 fontWeight: typography.fontWeight.bold,
-                                color: colors.text.light,
-                                lineHeight: 1.15,
-                                mb: 1,
+                                color: colors.text.light, lineHeight: 1.15, mb: 1,
                             }}>
                                 Give Your Child
                             </Typography>
 
-                            {/* Gold highlighted line */}
+                            {/* Gold underlined */}
                             <Box sx={{ position: 'relative', display: 'inline-block', mb: 3 }}>
                                 <Typography sx={{
                                     fontFamily: typography.fontFamily.accent,
                                     fontSize: { xs: typography.fontSize['3xl'], md: '3.2rem', lg: '3.8rem' },
                                     fontWeight: typography.fontWeight.bold,
-                                    color: colors.secondary.main,
-                                    lineHeight: 1.15,
+                                    color: colors.secondary.main, lineHeight: 1.15,
                                 }}>
                                     The Best Start.
                                 </Typography>
                                 <Box sx={{
-                                    position: 'absolute',
-                                    bottom: -2, left: 0,
-                                    height: 3,
-                                    bgcolor: colors.secondary.main,
-                                    borderRadius: 2,
+                                    position: 'absolute', bottom: -2, left: 0,
+                                    height: 3, bgcolor: colors.secondary.main, borderRadius: 2,
                                     animation: visible ? 'cta_lineGrow 0.8s ease 0.6s both' : 'none',
                                     width: visible ? '100%' : 0,
                                 }} />
@@ -232,9 +199,7 @@ const CTABanner = () => {
                                 fontFamily: typography.fontFamily.body,
                                 fontSize: typography.fontSize.base,
                                 color: 'rgba(255,255,255,0.6)',
-                                lineHeight: 1.9,
-                                mb: 5,
-                                maxWidth: 480,
+                                lineHeight: 1.9, mb: 5, maxWidth: 480,
                             }}>
                                 Applications are now open for the new academic session.
                                 Limited spaces available — don't miss your child's place at
@@ -243,17 +208,19 @@ const CTABanner = () => {
 
                             {/* CTA Buttons */}
                             <Stack direction={{ xs: 'column', sm: 'row' }} gap={2}>
+
+                                {/* ← Apply → /admissions */}
                                 <Button
                                     variant="contained"
                                     endIcon={<ArrowForwardIcon />}
+                                    onClick={() => navigate('/admissions')}
                                     sx={{
                                         fontFamily: typography.fontFamily.body,
                                         fontSize: typography.fontSize.sm,
                                         fontWeight: typography.fontWeight.semiBold,
                                         bgcolor: colors.secondary.main,
                                         color: colors.primary.dark,
-                                        px: 4, py: 1.7,
-                                        borderRadius: '8px',
+                                        px: 4, py: 1.7, borderRadius: '8px',
                                         textTransform: 'none',
                                         animation: 'cta_pulse 2.5s ease infinite',
                                         transition: 'all 0.25s ease',
@@ -268,17 +235,19 @@ const CTABanner = () => {
                                 >
                                     Apply for Admission
                                 </Button>
+
+                                {/* ← Download Prospectus → /admissions/requirements */}
                                 <Button
                                     variant="outlined"
                                     startIcon={<DownloadIcon />}
+                                    onClick={() => navigate('/admissions/requirements')}
                                     sx={{
                                         fontFamily: typography.fontFamily.body,
                                         fontSize: typography.fontSize.sm,
                                         fontWeight: typography.fontWeight.semiBold,
                                         borderColor: `${colors.secondary.main}55`,
                                         color: colors.text.light,
-                                        px: 4, py: 1.7,
-                                        borderRadius: '8px',
+                                        px: 4, py: 1.7, borderRadius: '8px',
                                         textTransform: 'none',
                                         transition: 'all 0.25s ease',
                                         '&:hover': {
@@ -295,16 +264,14 @@ const CTABanner = () => {
                             </Stack>
                         </Box>
 
-                        {/* ── RIGHT: Perks card */}
+                        {/* RIGHT: Perks card */}
                         <Box
                             sx={{
                                 bgcolor: colors.primary.main,
                                 borderRadius: '20px',
                                 border: `1px solid rgba(255,255,255,0.07)`,
                                 overflow: 'hidden',
-                                animation: visible ? 'cta_scaleIn 0.8s ease 0.3s both' : 'none',
                                 boxShadow: '0 24px 60px rgba(0,0,0,0.3)',
-                                // Float animation
                                 animation: visible
                                     ? 'cta_scaleIn 0.8s ease 0.3s both, cta_float 6s ease-in-out 1s infinite'
                                     : 'none',
@@ -314,9 +281,7 @@ const CTABanner = () => {
                             <Box sx={{
                                 bgcolor: colors.secondary.main,
                                 px: 3, py: 2,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
+                                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                             }}>
                                 <Typography sx={{
                                     fontFamily: typography.fontFamily.heading,
@@ -335,16 +300,10 @@ const CTABanner = () => {
                                     <Box
                                         key={perk}
                                         sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 1.5,
+                                            display: 'flex', alignItems: 'center', gap: 1.5,
                                             py: 1.6,
-                                            borderBottom: i < perks.length - 1
-                                                ? '1px solid rgba(255,255,255,0.06)'
-                                                : 'none',
-                                            animation: visible
-                                                ? `cta_fadeUp 0.6s ease ${0.4 + i * 0.1}s both`
-                                                : 'none',
+                                            borderBottom: i < perks.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                                            animation: visible ? `cta_fadeUp 0.6s ease ${0.4 + i * 0.1}s both` : 'none',
                                         }}
                                     >
                                         <CheckCircleIcon sx={{ color: colors.secondary.main, fontSize: 18, flexShrink: 0 }} />
@@ -366,20 +325,44 @@ const CTABanner = () => {
                                     border: `1px solid ${colors.secondary.main}44`,
                                     borderRadius: '8px',
                                     px: 2, py: 1.5,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 1.2,
+                                    display: 'flex', alignItems: 'center', gap: 1.2,
                                 }}>
                                     <AccessTimeIcon sx={{ color: colors.secondary.main, fontSize: 16 }} />
                                     <Typography sx={{
                                         fontFamily: typography.fontFamily.body,
                                         fontSize: typography.fontSize.xs,
                                         fontWeight: typography.fontWeight.semiBold,
-                                        color: colors.secondary.light,
-                                        letterSpacing: 0.5,
+                                        color: colors.secondary.light, letterSpacing: 0.5,
                                     }}>
                                         Application Deadline: <strong>July 31, 2026</strong>
                                     </Typography>
+                                </Box>
+
+                                {/* ← View requirements → /admissions/requirements */}
+                                <Box
+                                    onClick={() => navigate('/admissions/requirements')}
+                                    sx={{
+                                        mt: 2,
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1,
+                                        py: 1.5, borderRadius: '8px',
+                                        border: `1px solid rgba(255,255,255,0.1)`,
+                                        cursor: 'pointer', transition: 'all 0.25s ease',
+                                        '&:hover': {
+                                            bgcolor: `${colors.secondary.main}18`,
+                                            borderColor: colors.secondary.main,
+                                        },
+                                    }}
+                                >
+                                    <Typography sx={{
+                                        fontFamily: typography.fontFamily.body,
+                                        fontSize: typography.fontSize.xs,
+                                        fontWeight: typography.fontWeight.bold,
+                                        color: colors.secondary.main,
+                                        letterSpacing: 1, textTransform: 'uppercase',
+                                    }}>
+                                        View Entry Requirements
+                                    </Typography>
+                                    <ArrowForwardIcon sx={{ fontSize: 13, color: colors.secondary.main }} />
                                 </Box>
                             </Box>
                         </Box>
@@ -389,8 +372,7 @@ const CTABanner = () => {
 
                 {/* Bottom gold shimmer line */}
                 <Box sx={{
-                    position: 'absolute', bottom: 0, left: 0, right: 0,
-                    height: 2,
+                    position: 'absolute', bottom: 0, left: 0, right: 0, height: 2,
                     background: `linear-gradient(90deg, transparent, ${colors.secondary.main}, transparent)`,
                 }} />
             </Box>

@@ -25,8 +25,8 @@ export const mainNavLinks = [
       { label: "Curriculum Overview", path: "/academics/curriculum" },
       { label: "Junior Secondary", path: "/academics/junior" },
       { label: "Senior Secondary", path: "/academics/senior" },
-      { label: "Subject List", path: "/academics/subjects" }, // ← added
-      { label: "Academic Calendar", path: "/academics/calendar" }, // ← added
+      { label: "Subject List", path: "/academics/subjects" },
+      { label: "Academic Calendar", path: "/academics/calendar" },
     ],
   },
   {
@@ -67,7 +67,6 @@ export const mainNavLinks = [
       { label: "FAQs", path: "/admissions/faqs" },
     ],
   },
-  { label: "Testimonials", path: "/testimonials" },
   {
     label: "Campus Life",
     path: "/campus-life",

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, Stack } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useNavigate } from 'react-router-dom';   // ← added
 import { colors, typography } from '../../../theme';
 
 // ── Keyframes
@@ -38,6 +39,7 @@ const highlights = [
 const WelcomeSection = () => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
+  const navigate = useNavigate();   // ← added
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,14 +62,11 @@ const WelcomeSection = () => {
           bgcolor: colors.primary.dark,
         }}
       >
-        {/* ══════════════════════════════════════
-            BIG FADED BACKGROUND TEXT — decorative
-            ══════════════════════════════════════ */}
+        {/* BIG FADED BACKGROUND TEXT */}
         <Typography
           sx={{
             position: 'absolute',
-            top: '50%',
-            left: '50%',
+            top: '50%', left: '50%',
             transform: 'translate(-50%, -50%)',
             fontFamily: typography.fontFamily.accent,
             fontSize: { xs: '12rem', md: '20rem' },
@@ -77,28 +76,22 @@ const WelcomeSection = () => {
             whiteSpace: 'nowrap',
             userSelect: 'none',
             pointerEvents: 'none',
-            zIndex: 0,
-            lineHeight: 1,
+            zIndex: 0, lineHeight: 1,
           }}
         >
           PRESTON
         </Typography>
 
-        {/* ══════════════════════════════════════
-            LAYOUT — image left, text right
-            ══════════════════════════════════════ */}
+        {/* LAYOUT */}
         <Box
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
             minHeight: { xs: 'auto', md: '85vh' },
-            position: 'relative',
-            zIndex: 1,
+            position: 'relative', zIndex: 1,
           }}
         >
-          {/* ──────────────────────────────
-              LEFT — IMAGE PANEL
-          ────────────────────────────── */}
+          {/* LEFT — IMAGE PANEL */}
           <Box
             sx={{
               flex: { xs: 'none', md: '0 0 48%' },
@@ -108,45 +101,40 @@ const WelcomeSection = () => {
               animation: visible ? 'slideInLeft 0.9s ease both' : 'none',
             }}
           >
-            {/* The image */}
             <Box
               component="img"
               src="/welcome.jpg"
               alt="Preston students"
               sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
+                width: '100%', height: '100%',
+                objectFit: 'cover', objectPosition: 'center',
                 display: 'block',
                 transition: 'transform 6s ease',
                 '&:hover': { transform: 'scale(1.04)' },
               }}
             />
 
-            {/* Dark overlay on image */}
+            {/* Dark overlay */}
             <Box
               sx={{
-                position: 'absolute',
-                inset: 0,
+                position: 'absolute', inset: 0,
                 background: `linear-gradient(135deg, ${colors.primary.dark}BB 0%, transparent 60%, ${colors.primary.dark}77 100%)`,
               }}
             />
 
-            {/* Diagonal clip on right edge */}
+            {/* Diagonal clip */}
             <Box
               sx={{
                 display: { xs: 'none', md: 'block' },
                 position: 'absolute',
-                top: 0, right: -1, bottom: 0,
-                width: 80,
+                top: 0, right: -1, bottom: 0, width: 80,
                 background: colors.primary.dark,
                 clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
                 zIndex: 2,
               }}
             />
 
-            {/* ── Floating experience badge */}
+            {/* Floating badge */}
             <Box
               sx={{
                 position: 'absolute',
@@ -174,7 +162,7 @@ const WelcomeSection = () => {
               </Box>
             </Box>
 
-            {/* ── Top-right quote tag on image */}
+            {/* Quote tag */}
             <Box
               sx={{
                 position: 'absolute',
@@ -195,9 +183,7 @@ const WelcomeSection = () => {
             </Box>
           </Box>
 
-          {/* ──────────────────────────────
-              RIGHT — TEXT PANEL
-          ────────────────────────────── */}
+          {/* RIGHT — TEXT PANEL */}
           <Box
             sx={{
               flex: 1,
@@ -210,37 +196,28 @@ const WelcomeSection = () => {
           >
             <Box sx={{ maxWidth: 540 }}>
 
-              {/* ── Section label */}
+              {/* Section label */}
               <Stack direction="row" alignItems="center" gap={1.5} sx={{ mb: 2.5 }}>
                 <Box sx={{ width: 36, height: 2, bgcolor: colors.secondary.main }} />
-                <Typography
-                  sx={{
-                    fontFamily: typography.fontFamily.body,
-                    fontSize: typography.fontSize.xs,
-                    fontWeight: typography.fontWeight.bold,
-                    color: colors.secondary.main,
-                    letterSpacing: 3,
-                    textTransform: 'uppercase',
-                  }}
-                >
+                <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, fontWeight: typography.fontWeight.bold, color: colors.secondary.main, letterSpacing: 3, textTransform: 'uppercase' }}>
                   Who We Are
                 </Typography>
               </Stack>
 
-              {/* ── Main heading */}
+              {/* Heading */}
               <Typography
                 sx={{
                   fontFamily: typography.fontFamily.accent,
                   fontSize: { xs: typography.fontSize['2xl'], md: '2.6rem' },
                   fontWeight: typography.fontWeight.bold,
                   color: colors.text.light,
-                  lineHeight: 1.2,
-                  mb: 1,
+                  lineHeight: 1.2, mb: 1,
                   animation: visible ? 'slideInUp 0.7s ease 0.35s both' : 'none',
                 }}
               >
                 A Legacy Built on
               </Typography>
+
               {/* Gold underlined word */}
               <Box sx={{ position: 'relative', display: 'inline-block', mb: 3 }}>
                 <Typography
@@ -248,35 +225,29 @@ const WelcomeSection = () => {
                     fontFamily: typography.fontFamily.accent,
                     fontSize: { xs: typography.fontSize['2xl'], md: '2.6rem' },
                     fontWeight: typography.fontWeight.bold,
-                    color: colors.secondary.main,
-                    lineHeight: 1.2,
+                    color: colors.secondary.main, lineHeight: 1.2,
                   }}
                 >
                   Excellence & Purpose.
                 </Typography>
-                {/* Animated underline */}
                 <Box
                   sx={{
-                    position: 'absolute',
-                    bottom: -4, left: 0,
-                    height: 3,
-                    bgcolor: colors.secondary.main,
-                    borderRadius: 2,
+                    position: 'absolute', bottom: -4, left: 0,
+                    height: 3, bgcolor: colors.secondary.main, borderRadius: 2,
                     animation: visible ? 'revealLine 0.8s ease 0.7s both' : 'none',
                     width: visible ? '100%' : 0,
                   }}
                 />
               </Box>
 
-              {/* ── Body text */}
+              {/* Body text */}
               <Typography
                 sx={{
                   fontFamily: typography.fontFamily.body,
                   fontSize: typography.fontSize.base,
                   fontWeight: typography.fontWeight.regular,
                   color: 'rgba(255,255,255,0.6)',
-                  lineHeight: 1.9,
-                  mb: 4,
+                  lineHeight: 1.9, mb: 4,
                   animation: visible ? 'slideInUp 0.7s ease 0.5s both' : 'none',
                 }}
               >
@@ -286,44 +257,31 @@ const WelcomeSection = () => {
                 For over two decades, we have shaped confident, capable leaders.
               </Typography>
 
-              {/* ── Highlights */}
-              <Box
-                sx={{
-                  mb: 4.5,
-                  animation: visible ? 'slideInUp 0.7s ease 0.6s both' : 'none',
-                }}
-              >
+              {/* Highlights */}
+              <Box sx={{ mb: 4.5, animation: visible ? 'slideInUp 0.7s ease 0.6s both' : 'none' }}>
                 {highlights.map((item, i) => (
                   <Box
                     key={item}
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1.5,
+                      display: 'flex', alignItems: 'center', gap: 1.5,
                       py: 1.1,
                       borderBottom: i < highlights.length - 1 ? `1px solid rgba(255,255,255,0.06)` : 'none',
                     }}
                   >
                     <CheckCircleIcon sx={{ color: colors.secondary.main, fontSize: 18, flexShrink: 0 }} />
-                    <Typography
-                      sx={{
-                        fontFamily: typography.fontFamily.body,
-                        fontSize: typography.fontSize.sm,
-                        fontWeight: typography.fontWeight.medium,
-                        color: 'rgba(255,255,255,0.75)',
-                      }}
-                    >
+                    <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.sm, fontWeight: typography.fontWeight.medium, color: 'rgba(255,255,255,0.75)' }}>
                       {item}
                     </Typography>
                   </Box>
                 ))}
               </Box>
 
-              {/* ── CTA */}
+              {/* CTA — ← navigates to /about/history */}
               <Box sx={{ animation: visible ? 'slideInUp 0.7s ease 0.75s both' : 'none' }}>
                 <Button
                   variant="contained"
                   endIcon={<ArrowForwardIcon />}
+                  onClick={() => navigate('/about/history')}
                   sx={{
                     fontFamily: typography.fontFamily.body,
                     fontSize: typography.fontSize.sm,

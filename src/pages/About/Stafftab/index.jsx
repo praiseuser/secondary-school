@@ -14,17 +14,15 @@ const keyframes = `
     100% { background-position: 400px 0; }
   }
 `;
-
-// ── Replace src with real staff photo paths e.g. '/staff-principal.jpg'
 const staff = [
-    { name: 'Mr. Emmanuel Okafor', role: 'Principal', dept: 'Administration', src: '/staff1.jpg', bio: 'Over 20 years in education leadership. Former WAEC examiner and Cambridge-trained educator.' },
-    { name: 'Mrs. Ngozi Adeyemi', role: 'Vice Principal (Acad.)', dept: 'Administration', src: '/staff2.jpg', bio: 'BSc Education, MSc Curriculum Development. Passionate about transformative learning.' },
+    { name: 'Mr. Emmanuel Okafor', role: 'Principal', dept: 'Administration', src: '/staff1.webp', bio: 'Over 20 years in education leadership. Former WAEC examiner and Cambridge-trained educator.' },
+    { name: 'Mr. Sonnic Adeyemi', role: 'Vice Principal (Acad.)', dept: 'Administration', src: '/staff2.jpeg', bio: 'BSc Education, MSc Curriculum Development. Passionate about transformative learning.' },
     { name: 'Mr. Chukwuma Eze', role: 'Head of Sciences', dept: 'Sciences', src: '/staff3.jpg', bio: 'PhD Chemistry, University of Lagos. Award-winning science teacher of the year 2022.' },
     { name: 'Mrs. Amina Bello', role: 'Head of Languages', dept: 'Humanities', src: '/staff4.jpg', bio: 'MA English Literature. Dedicated to nurturing voice, expression and critical thinking.' },
     { name: 'Mr. Femi Adewale', role: 'Head of Mathematics', dept: 'Sciences', src: '/staff5.jpg', bio: 'BSc Mathematics, MSc Statistics. Brings mathematical thinking alive for every student.' },
     { name: 'Mrs. Chidinma Obi', role: 'Head of Arts & Culture', dept: 'Creative Arts', src: '/staff6.jpg', bio: 'Celebrated visual artist and educator. Has led our cultural day programme for 10 years.' },
-    { name: 'Mr. Yusuf Ibrahim', role: 'Director of Sports', dept: 'Sports', src: '/staff7.jpg', bio: 'Former national athlete. Coaches our championship-winning football and athletics teams.' },
-    { name: 'Mrs. Blessing Nwosu', role: 'School Counsellor', dept: 'Student Welfare', src: '/staff8.jpg', bio: 'MSc Psychology. Committed to every student\'s mental health and personal development.' },
+    { name: 'Mr. Yusuf Ibrahim', role: 'Director of Sports', dept: 'Sports', src: '/staff7.jpeg', bio: 'Former national athlete. Coaches our championship-winning football and athletics teams.' },
+    { name: 'Mrs. Blessing Nwosu', role: 'School Counsellor', dept: 'Student Welfare', src: '/staff8.jpeg', bio: 'MSc Psychology. Committed to every student\'s mental health and personal development.' },
 ];
 
 const deptColors = {
@@ -214,9 +212,6 @@ const StaffTab = () => {
                         px: 3, py: 1.5, mb: 5,
                         animation: visible ? 'st_fadeUp 0.6s ease 0.1s both' : 'none',
                     }}>
-                        <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, color: colors.secondary.dark, fontWeight: typography.fontWeight.medium }}>
-                            📌 Add real staff photos: save as <strong>staff1.jpg, staff2.jpg … staff8.jpg</strong> in your <strong>/public</strong> folder to replace the placeholders.
-                        </Typography>
                     </Box>
 
                     {/* Grid */}
