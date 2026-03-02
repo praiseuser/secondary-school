@@ -21,12 +21,12 @@ const keyframes = `
 
 // Save facility images as /facility1.jpg etc in public folder
 const facilities = [
-    { icon: ScienceIcon, title: 'Science Laboratories', src: '/facility1.jpg', tag: 'Sciences', desc: '4 fully-equipped labs for Biology, Chemistry, Physics and Integrated Science — supporting hands-on learning at every level.' },
-    { icon: ComputerIcon, title: 'ICT Centre', src: '/facility2.jpg', tag: 'Technology', desc: '60-seat computer lab with high-speed internet, coding stations and smart projectors for digital learning.' },
-    { icon: LocalLibraryIcon, title: 'Library & Resource Hub', src: '/facility3.jpg', tag: 'Learning', desc: 'Over 10,000 volumes, digital reading stations and quiet study rooms open to students daily from 7am to 8pm.' },
-    { icon: SportsIcon, title: 'Sports Complex', src: '/facility4.jpg', tag: 'Sports', desc: 'Full-size football pitch, basketball court, athletics track, swimming pool and a multipurpose indoor arena.' },
-    { icon: HotelIcon, title: 'Boarding House', src: '/facility5.jpg', tag: 'Boarding', desc: 'Safe, supervised dormitories for 500 students with 24/7 security, housemasters and dedicated study time.' },
-    { icon: RestaurantIcon, title: 'Dining Hall', src: '/facility6.jpg', tag: 'Wellness', desc: 'Nutritionally balanced meals served three times daily in a 600-seat dining hall managed by professional catering staff.' },
+    { icon: ScienceIcon, title: 'Science Laboratories', src: '/faci1.jpg', tag: 'Sciences', desc: '4 fully-equipped labs for Biology, Chemistry, Physics and Integrated Science — supporting hands-on learning at every level.' },
+    { icon: ComputerIcon, title: 'ICT Centre', src: '/faci2.jpg', tag: 'Technology', desc: '60-seat computer lab with high-speed internet, coding stations and smart projectors for digital learning.' },
+    { icon: LocalLibraryIcon, title: 'Library & Resource Hub', src: '/faci3.jpg', tag: 'Learning', desc: 'Over 10,000 volumes, digital reading stations and quiet study rooms open to students daily from 7am to 8pm.' },
+    { icon: SportsIcon, title: 'Sports Complex', src: '/faci4.jpg', tag: 'Sports', desc: 'Full-size football pitch, basketball court, athletics track, swimming pool and a multipurpose indoor arena.' },
+    { icon: HotelIcon, title: 'Boarding House', src: '/faci5.jpg', tag: 'Boarding', desc: 'Safe, supervised dormitories for 500 students with 24/7 security, housemasters and dedicated study time.' },
+    { icon: RestaurantIcon, title: 'Dining Hall', src: '/faci6.jpg', tag: 'Wellness', desc: 'Nutritionally balanced meals served three times daily in a 600-seat dining hall managed by professional catering staff.' },
 ];
 
 const tagColors = {
@@ -196,19 +196,6 @@ const FacilitiesTab = () => {
             {/* ── Facilities grid */}
             <Box ref={ref} sx={{ bgcolor: colors.background.default, py: { xs: 8, md: 12 } }}>
                 <Container maxWidth="xl">
-
-                    {/* Tip note */}
-                    <Box sx={{
-                        bgcolor: `${colors.secondary.main}15`,
-                        border: `1px solid ${colors.secondary.main}44`,
-                        borderLeft: `4px solid ${colors.secondary.main}`,
-                        borderRadius: '0 8px 8px 0',
-                        px: 3, py: 1.5, mb: 5,
-                    }}>
-                        <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, color: colors.secondary.dark, fontWeight: typography.fontWeight.medium }}>
-                            📌 Add facility photos: save as <strong>facility1.jpg … facility6.jpg</strong> in your <strong>/public</strong> folder.
-                        </Typography>
-                    </Box>
 
                     <Box sx={{
                         display: 'grid',

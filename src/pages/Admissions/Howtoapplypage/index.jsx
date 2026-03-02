@@ -135,7 +135,7 @@ const HowToApplyPage = () => {
                                 </Typography>
                             </Box>
                             <Box sx={{ display: { xs: 'none', md: 'block' }, animation: visible ? 'ap_fadeRight 0.8s ease 0.2s both' : 'none', position: 'relative' }}>
-                                <Box component="img" src="/admissions-apply.jpg" alt="How to Apply"
+                                <Box component="img" src="/image.jpg" alt="How to Apply"
                                     sx={{ width: '100%', height: 360, objectFit: 'cover', borderRadius: '20px', display: 'block', boxShadow: '0 32px 80px rgba(0,0,0,0.4)' }}
                                 />
                                 <Box sx={{ position: 'absolute', top: 20, left: -20, right: 20, bottom: -20, border: `2px solid ${colors.secondary.main}33`, borderRadius: '20px', zIndex: -1 }} />

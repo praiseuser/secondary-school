@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Stack, Container } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ScienceIcon from '@mui/icons-material/Science';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import SchoolIcon from '@mui/icons-material/School';
 import { useNavigate } from 'react-router-dom';
 import { colors, typography } from '../../../theme';
 
@@ -13,23 +18,23 @@ const keyframes = `
 
 const subjectData = [
     {
-        arm: 'All Students (Core)', color: colors.primary.dark, icon: '📚',
+        arm: 'All Students (Core)', color: colors.primary.dark, Icon: MenuBookIcon,
         subjects: ['English Language', 'Mathematics', 'Civic Education', 'Computer Studies', 'Physical & Health Education', 'French'],
     },
     {
-        arm: 'Sciences', color: colors.primary.main, icon: '🔬',
+        arm: 'Sciences', color: colors.primary.main, Icon: ScienceIcon,
         subjects: ['Biology', 'Chemistry', 'Physics', 'Further Mathematics', 'Agricultural Science', 'Technical Drawing', 'Food & Nutrition'],
     },
     {
-        arm: 'Arts', color: colors.secondary.dark, icon: '🎭',
+        arm: 'Arts', color: colors.secondary.dark, Icon: TheaterComedyIcon,
         subjects: ['Literature in English', 'Government', 'History', 'Geography', 'CRS / IRS', 'Fine Art', 'Music', 'Yoruba', 'Igbo', 'Hausa'],
     },
     {
-        arm: 'Commercials', color: '#2E7D32', icon: '📊',
+        arm: 'Commercials', color: '#2E7D32', Icon: BarChartIcon,
         subjects: ['Economics', 'Accounting', 'Commerce', 'Office Practice', 'Marketing', 'Business Studies'],
     },
     {
-        arm: 'Junior Secondary Only', color: colors.primary.light, icon: '🏫',
+        arm: 'Junior Secondary Only', color: colors.primary.light, Icon: SchoolIcon,
         subjects: ['Basic Science', 'Basic Technology', 'Social Studies', 'Home Economics', 'Cultural & Creative Arts', 'Security Education'],
     },
 ];
@@ -101,47 +106,63 @@ const SubjectListPage = () => {
 
                         {/* Subject groups */}
                         <Stack gap={4}>
-                            {displayed.map((group, gi) => (
-                                <Box key={group.arm} sx={{ animation: visible ? `sl_fadeUp 0.6s ease ${gi * 0.1 + 0.2}s both` : 'none' }}>
-                                    {/* Group header */}
-                                    <Stack direction="row" alignItems="center" gap={2} sx={{ mb: 2.5 }}>
-                                        <Typography sx={{ fontSize: '1.4rem' }}>{group.icon}</Typography>
-                                        <Typography sx={{ fontFamily: typography.fontFamily.heading, fontSize: typography.fontSize.lg, fontWeight: typography.fontWeight.bold, color: colors.primary.dark }}>{group.arm}</Typography>
-                                        <Box sx={{ flex: 1, height: 1, bgcolor: group.color, opacity: 0.25 }} />
-                                        <Box sx={{ bgcolor: group.color, px: 1.5, py: 0.4, borderRadius: '4px' }}>
-                                            <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: '0.65rem', fontWeight: typography.fontWeight.bold, color: 'white', letterSpacing: 1 }}>
-                                                {group.subjects.length} subjects
-                                            </Typography>
-                                        </Box>
-                                    </Stack>
+                            {displayed.map((group, gi) => {
+                                const GroupIcon = group.Icon;
+                                return (
+                                    <Box key={group.arm} sx={{ animation: visible ? `sl_fadeUp 0.6s ease ${gi * 0.1 + 0.2}s both` : 'none' }}>
 
-                                    {/* Subject pills */}
-                                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-                                        {group.subjects.map((s, si) => (
-                                            <Box key={s}
-                                                sx={{
-                                                    px: 2.5, py: 1.2,
-                                                    borderRadius: '8px',
-                                                    bgcolor: colors.background.paper,
-                                                    border: `1px solid ${colors.divider}`,
-                                                    transition: 'all 0.25s ease',
-                                                    animation: visible ? `sl_fadeUp 0.5s ease ${gi * 0.1 + si * 0.04 + 0.3}s both` : 'none',
-                                                    '&:hover': {
-                                                        bgcolor: group.color,
-                                                        borderColor: group.color,
-                                                        transform: 'translateY(-3px)',
-                                                        boxShadow: `0 8px 20px rgba(0,0,0,0.12)`,
-                                                        '& .subj-label': { color: 'white' },
-                                                    },
-                                                }}>
-                                                <Typography className="subj-label" sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.sm, fontWeight: typography.fontWeight.medium, color: colors.text.primary, transition: 'color 0.25s ease' }}>
-                                                    {s}
+                                        {/* Group header */}
+                                        <Stack direction="row" alignItems="center" gap={2} sx={{ mb: 2.5 }}>
+                                            {/* Icon box */}
+                                            <Box sx={{
+                                                width: 36, height: 36, borderRadius: '9px',
+                                                bgcolor: group.color + '18',
+                                                border: `1px solid ${group.color}33`,
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                flexShrink: 0,
+                                            }}>
+                                                <GroupIcon sx={{ fontSize: 18, color: group.color }} />
+                                            </Box>
+
+                                            <Typography sx={{ fontFamily: typography.fontFamily.heading, fontSize: typography.fontSize.lg, fontWeight: typography.fontWeight.bold, color: colors.primary.dark }}>
+                                                {group.arm}
+                                            </Typography>
+                                            <Box sx={{ flex: 1, height: 1, bgcolor: group.color, opacity: 0.25 }} />
+                                            <Box sx={{ bgcolor: group.color, px: 1.5, py: 0.4, borderRadius: '4px' }}>
+                                                <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: '0.65rem', fontWeight: typography.fontWeight.bold, color: 'white', letterSpacing: 1 }}>
+                                                    {group.subjects.length} subjects
                                                 </Typography>
                                             </Box>
-                                        ))}
+                                        </Stack>
+
+                                        {/* Subject pills */}
+                                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+                                            {group.subjects.map((s, si) => (
+                                                <Box key={s}
+                                                    sx={{
+                                                        px: 2.5, py: 1.2,
+                                                        borderRadius: '8px',
+                                                        bgcolor: colors.background.paper,
+                                                        border: `1px solid ${colors.divider}`,
+                                                        transition: 'all 0.25s ease',
+                                                        animation: visible ? `sl_fadeUp 0.5s ease ${gi * 0.1 + si * 0.04 + 0.3}s both` : 'none',
+                                                        '&:hover': {
+                                                            bgcolor: group.color,
+                                                            borderColor: group.color,
+                                                            transform: 'translateY(-3px)',
+                                                            boxShadow: `0 8px 20px rgba(0,0,0,0.12)`,
+                                                            '& .subj-label': { color: 'white' },
+                                                        },
+                                                    }}>
+                                                    <Typography className="subj-label" sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.sm, fontWeight: typography.fontWeight.medium, color: colors.text.primary, transition: 'color 0.25s ease' }}>
+                                                        {s}
+                                                    </Typography>
+                                                </Box>
+                                            ))}
+                                        </Box>
                                     </Box>
-                                </Box>
-                            ))}
+                                );
+                            })}
                         </Stack>
                     </Container>
                 </Box>

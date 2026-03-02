@@ -91,7 +91,7 @@ export const newsData = [
         readTime: '3 min read',
         title: 'State-of-the-Art ICT Centre Officially Opened',
         excerpt: 'Preston\'s brand new 60-seat ICT Centre was officially commissioned, giving students access to the latest computers, high-speed internet and coding workstations.',
-        img: '/facility2.jpg',
+        img: '/faci2.jpg',
         featured: false,
         body: [
             'Preston International School officially commissioned its new 60-seat ICT Centre on October 10, 2025 in a ceremony attended by parents, staff, students and dignitaries from the Lagos State Ministry of Education.',
