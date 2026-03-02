@@ -12,15 +12,15 @@ import VisionTab from '../pages/About/Visiontab';
 import CoreValuesTab from '../pages/About/Corevaluestab';
 import StaffTab from '../pages/About/Stafftab';
 import FacilitiesTab from '../pages/About/Facilitiestab';
-import CurriculumPage from '../pages/Academics/CurriculumPage';
-import JuniorSecondaryPage from '../pages/Academics/JuniorSecondaryPage';
-import SeniorSecondaryPage from '../pages/Academics/SeniorSecondaryPage';
-import SubjectListPage from '../pages/Academics/SubjectListPage';
-import AcademicCalendarPage from '../pages/Academics/AcademicCalendarPage';
-import HowToApplyPage from '../pages/Admissions/HowToApplyPage';
-import RequirementsPage from '../pages/Admissions/RequirementsPage';
-import FAQsPage from '../pages/Admissions/FAQsPage';
-import NewsDetailPage from '../pages/News/NewsDetailPage';
+import CurriculumPage from '../pages/Academics/Curriculumpage';
+import JuniorSecondaryPage from '../pages/Academics/Juniorsecondarypage';
+import SeniorSecondaryPage from '../pages/Academics/Seniorsecondarypage';
+import SubjectListPage from '../pages/Academics/Subjectlistpage';
+import AcademicCalendarPage from '../pages/Academics/Academiccalendarpage';
+import HowToApplyPage from '../pages/Admissions/Howtoapplypage';
+import RequirementsPage from '../pages/Admissions/Requirementspage';
+import FAQsPage from '../pages/Admissions/Faqspage'
+import NewsDetailPage from '../pages/News/Newsdetailpage';
 
 const AppRoutes = () => {
     return (
