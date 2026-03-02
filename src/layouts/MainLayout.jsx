@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ScrollToTopButton from '../components/ScrollToTopButton';
+import ScrollToTopButton from '../components/Scrolltotopbutton';
 
 const ScrollToTop = () => {
     const { pathname } = useLocation();
