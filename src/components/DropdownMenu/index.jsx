@@ -14,7 +14,7 @@ const keyframes = `
   }
 `;
 
-const DropdownMenu = ({ items, visible, label }) => {
+const DropdownMenu = ({ items, visible, label, onClose }) => {
     return (
         <>
             <style>{keyframes}</style>
@@ -147,6 +147,7 @@ const DropdownMenu = ({ items, visible, label }) => {
                                         <Box
                                             component={Link}
                                             to={item.path}
+                                            onClick={onClose}
                                             sx={{
                                                 display: 'flex',
                                                 alignItems: 'center',

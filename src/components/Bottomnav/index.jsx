@@ -98,7 +98,7 @@ const BottomNav = () => {
                 const isOpen   = activeDropdown === link.label;
                 return (
                   <Box key={link.label} onMouseEnter={() => setActiveDropdown(link.dropdown ? link.label : null)} sx={{ position: 'relative' }}>
-                    <Box component={Link} to={link.path} sx={{ display: 'flex', alignItems: 'center', gap: 0.3, px: 1.6, py: 2.2, textDecoration: 'none', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease', '&::after': { content: '""', position: 'absolute', bottom: 0, left: '12%', right: '12%', height: 2, bgcolor: colors.secondary.main, borderRadius: '2px 2px 0 0', transform: isActive || isOpen ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 0.22s ease', transformOrigin: 'center' }, '&:hover::after': { transform: 'scaleX(1)' } }}>
+                    <Box component={Link} to={link.path} onClick={() => setActiveDropdown(null)} sx={{ display: 'flex', alignItems: 'center', gap: 0.3, px: 1.6, py: 2.2, textDecoration: 'none', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease', '&::after': { content: '""', position: 'absolute', bottom: 0, left: '12%', right: '12%', height: 2, bgcolor: colors.secondary.main, borderRadius: '2px 2px 0 0', transform: isActive || isOpen ? 'scaleX(1)' : 'scaleX(0)', transition: 'transform 0.22s ease', transformOrigin: 'center' }, '&:hover::after': { transform: 'scaleX(1)' } }}>
                       <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.sm, fontWeight: link.highlight ? typography.fontWeight.bold : isActive ? typography.fontWeight.semiBold : typography.fontWeight.regular, color: link.highlight ? colors.secondary.light : isActive || isOpen ? colors.text.light : 'rgba(255,255,255,0.7)', whiteSpace: 'nowrap', transition: 'color 0.2s ease' }}>
                         {link.label}
                       </Typography>
@@ -111,16 +111,15 @@ const BottomNav = () => {
             </Stack>
 
             {/* Search button */}
-            <Box onClick={openSearch} sx={{ display: 'flex', alignItems: 'center', gap: 0.8, px: 1.5, py: 0.8, borderRadius: '6px', cursor: 'pointer', border: `1px solid rgba(255,255,255,0.1)`, transition: 'all 0.22s ease', '&:hover': { bgcolor: 'rgba(255,255,255,0.07)', borderColor: `${colors.secondary.main}44` } }}>
-              <SearchIcon sx={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }} />
-              <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, color: 'rgba(255,255,255,0.45)' }}>Search</Typography>
+            <Box onClick={openSearch} sx={{ display: 'flex', alignItems: 'center', px: 1.2, py: 0.8, borderRadius: '8px', cursor: 'pointer', border: `1px solid rgba(255,255,255,0.1)`, transition: 'all 0.22s ease', '&:hover': { bgcolor: 'rgba(255,255,255,0.07)', borderColor: `${colors.secondary.main}66`, '& .search-icon': { color: colors.secondary.main } } }}>
+              <SearchIcon className="search-icon" sx={{ fontSize: 25, color: 'rgba(255,255,255,0.6)', transition: 'color 0.2s ease' }} />
             </Box>
           </Stack>
         </Container>
 
         {/* Dropdown menus */}
         {mainNavLinks.map((link) =>
-          link.dropdown ? <DropdownMenu key={link.label} items={link.dropdown} label={link.label} visible={activeDropdown === link.label} /> : null
+          link.dropdown ? <DropdownMenu key={link.label} items={link.dropdown} label={link.label} visible={activeDropdown === link.label} onClose={() => setActiveDropdown(null)} /> : null
         )}
       </Box>
 
