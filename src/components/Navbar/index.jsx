@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Box } from '@mui/material';
 import TopBar from '../Topbar';
-import BottomNav from '../BottomNav';
+import BottomNav from '../Bottomnav';
 import MobileDrawer from '../Mobiledrawer';
 import { socials } from '../navbarData';
 
