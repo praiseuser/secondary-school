@@ -1,66 +1,73 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
-import ScrollToTop from '../components/ScrollToTop';
 import HomePage from '../pages/Home';
 import AboutPage from '../pages/About';
 import AcademicsPage from '../pages/Academics';
 import AdmissionsPage from '../pages/Admissions';
 import NewsPage from '../pages/News';
 import ContactPage from '../pages/Contact';
-import HistoryTab from '../pages/About/Historytab';
-import VisionTab from '../pages/About/Visiontab';
-import CoreValuesTab from '../pages/About/Corevaluestab';
-import StaffTab from '../pages/About/Stafftab';
-import FacilitiesTab from '../pages/About/Facilitiestab';
-import CurriculumPage from '../pages/Academics/Curriculumpage';
-import JuniorSecondaryPage from '../pages/Academics/Juniorsecondarypage';
-import SeniorSecondaryPage from '../pages/Academics/Seniorsecondarypage';
-import SubjectListPage from '../pages/Academics/Subjectlistpage';
-import AcademicCalendarPage from '../pages/Academics/Academiccalendarpage';
-import HowToApplyPage from '../pages/Admissions/Howtoapplypage';
-import RequirementsPage from '../pages/Admissions/Requirementspage';
-import FAQsPage from '../pages/Admissions/Faqspage'
-import NewsDetailPage from '../pages/News/Newsdetailpage';
+import HistoryTab from '../pages/About/HistoryTab';
+import VisionTab from '../pages/About/VisionTab';
+import CoreValuesTab from '../pages/About/CoreValuesTab';
+import StaffTab from '../pages/About/StaffTab';
+import FacilitiesTab from '../pages/About/FacilitiesTab';
+import CurriculumPage from '../pages/Academics/CurriculumPage';
+import JuniorSecondaryPage from '../pages/Academics/JuniorSecondaryPage';
+import SeniorSecondaryPage from '../pages/Academics/SeniorSecondaryPage';
+import SubjectListPage from '../pages/Academics/SubjectListPage';
+import AcademicCalendarPage from '../pages/Academics/AcademicCalendarPage';
+import HowToApplyPage from '../pages/Admissions/HowToApplyPage';
+import RequirementsPage from '../pages/Admissions/RequirementsPage';
+import FAQsPage from '../pages/Admissions/FAQsPage';
+import CampusLifePage from '../pages/CampusLife';
+import StudentLifePage from '../pages/CampusLife/StudentLifePage';
+import HealthSafetyPage from '../pages/CampusLife/HealthSafetyPage';
+import BoardingPage from '../pages/CampusLife/BoardingPage';
+import NewsDetailPage from '../pages/News/NewsDetailPage';
 
-const AppRoutes = () => {
-    return (
-        <Router>
-            <ScrollToTop />
-            <Routes>
-                <Route path="/" element={<MainLayout />}>
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <MainLayout />,
+        children: [
+            { index: true, element: <HomePage /> },
 
-                    <Route index element={<HomePage />} />
+            {
+                path: 'about',
+                element: <AboutPage />,
+                children: [
+                    { index: true, element: <Navigate to="history" replace /> },
+                    { path: 'history', element: <HistoryTab /> },
+                    { path: 'vision', element: <VisionTab /> },
+                    { path: 'values', element: <CoreValuesTab /> },
+                    { path: 'staff', element: <StaffTab /> },
+                    { path: 'facilities', element: <FacilitiesTab /> },
+                ],
+            },
 
-                    <Route path="about" element={<AboutPage />}>
-                        <Route index element={<Navigate to="history" replace />} />
-                        <Route path="history" element={<HistoryTab />} />
-                        <Route path="vision" element={<VisionTab />} />
-                        <Route path="values" element={<CoreValuesTab />} />
-                        <Route path="staff" element={<StaffTab />} />
-                        <Route path="facilities" element={<FacilitiesTab />} />
-                    </Route>
+            { path: 'academics', element: <AcademicsPage /> },
+            { path: 'academics/curriculum', element: <CurriculumPage /> },
+            { path: 'academics/junior', element: <JuniorSecondaryPage /> },
+            { path: 'academics/senior', element: <SeniorSecondaryPage /> },
+            { path: 'academics/subjects', element: <SubjectListPage /> },
+            { path: 'academics/calendar', element: <AcademicCalendarPage /> },
 
-                    <Route path="academics" element={<AcademicsPage />} />
-                    <Route path="academics/curriculum" element={<CurriculumPage />} />
-                    <Route path="academics/junior" element={<JuniorSecondaryPage />} />
-                    <Route path="academics/senior" element={<SeniorSecondaryPage />} />
-                    <Route path="academics/subjects" element={<SubjectListPage />} />
-                    <Route path="academics/calendar" element={<AcademicCalendarPage />} />
+            { path: 'admissions', element: <AdmissionsPage /> },
+            { path: 'admissions/apply', element: <HowToApplyPage /> },
+            { path: 'admissions/requirements', element: <RequirementsPage /> },
+            { path: 'admissions/faqs', element: <FAQsPage /> },
 
-                    <Route path="admissions" element={<AdmissionsPage />} />
-                    <Route path="admissions/apply" element={<HowToApplyPage />} />
-                    <Route path="admissions/requirements" element={<RequirementsPage />} />
-                    <Route path="admissions/faqs" element={<FAQsPage />} />
+            { path: 'campus-life', element: <CampusLifePage /> },
+            { path: 'campus-life/student-life', element: <StudentLifePage /> },
+            { path: 'campus-life/boarding', element: <BoardingPage /> },
+            { path: 'campus-life/health', element: <HealthSafetyPage /> },
 
-                    <Route path="news" element={<NewsPage />} />
-                    <Route path="news/:slug" element={<NewsDetailPage />} />
+            { path: 'news', element: <NewsPage /> },
+            { path: 'news/:slug', element: <NewsDetailPage /> },
 
-                    <Route path="contact" element={<ContactPage />} />
+            { path: 'contact', element: <ContactPage /> },
+        ],
+    },
+]);
 
-                </Route>
-            </Routes>
-        </Router>
-    );
-};
-
-export default AppRoutes;
+export default router;

@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Box } from '@mui/material';
-import TopBar from '../../components/Topbar';
-import BottomNav from '../../components/Bottomnav';
-import MobileDrawer from '../../components/Mobiledrawer';
+import TopBar from '../Topbar';
+import BottomNav from '../BottomNav';
+import MobileDrawer from '../Mobiledrawer';
 import { socials } from '../navbarData';
-
 
 const keyframes = `
   @keyframes nb_slideDown {
@@ -14,16 +13,16 @@ const keyframes = `
 `;
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [topBarH, setTopBarH] = useState(0);
+  const [topBarH, setTopBarH]       = useState(0);
   const [bottomNavH, setBottomNavH] = useState(0);
-  const topBarRef = useRef(null);
+  const topBarRef    = useRef(null);
   const bottomNavRef = useRef(null);
 
   useEffect(() => {
     const measure = () => {
-      if (topBarRef.current) setTopBarH(topBarRef.current.offsetHeight);
+      if (topBarRef.current)    setTopBarH(topBarRef.current.offsetHeight);
       if (bottomNavRef.current) setBottomNavH(bottomNavRef.current.offsetHeight);
     };
     measure();
@@ -61,12 +60,13 @@ const Navbar = () => {
       >
         <TopBar socials={socials} onMobileOpen={() => setMobileOpen(true)} />
       </Box>
+
       <Box
         ref={bottomNavRef}
         sx={{
           position: 'fixed',
           top: {
-            xs: topBarH,
+            xs: topBarH,                              
             md: scrolled ? 0 : topBarH,
           },
           left: 0, right: 0,

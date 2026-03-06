@@ -30,24 +30,6 @@ export const mainNavLinks = [
     ],
   },
   {
-    label: "Beyond Academics",
-    path: "/beyond-academics",
-    dropdown: [
-      { label: "Sports & Athletics", path: "/beyond-academics/sports" },
-      { label: "Clubs & Societies", path: "/beyond-academics/clubs" },
-      { label: "Arts & Culture", path: "/beyond-academics/arts" },
-    ],
-  },
-  {
-    label: "Nursery & Primary",
-    path: "/nursery-primary",
-    dropdown: [
-      { label: "Nursery School", path: "/nursery-primary/nursery" },
-      { label: "Primary School", path: "/nursery-primary/primary" },
-      { label: "Early Learning", path: "/nursery-primary/early-learning" },
-    ],
-  },
-  {
     label: "News & Events",
     path: "/news",
     dropdown: [

@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Stack, Container } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useNavigate } from 'react-router-dom';
 import { colors, typography } from '../../../theme';
+import PageHero from '../../../components/common/PageHero';
 
 const keyframes = `
   @keyframes fq_fadeUp {
@@ -94,7 +93,6 @@ const FAQItem = ({ faq, color }) => {
 const FAQsPage = () => {
     const [visible, setVisible] = useState(false);
     const ref = useRef(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const observer = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.05 });
@@ -107,26 +105,14 @@ const FAQsPage = () => {
             <style>{keyframes}</style>
             <Box ref={ref}>
 
-                {/* Hero */}
-                <Box sx={{ bgcolor: colors.primary.dark, py: { xs: 8, md: 11 }, position: 'relative', overflow: 'hidden', '&::before': { content: '""', position: 'absolute', inset: 0, backgroundImage: `radial-gradient(${colors.primary.light}12 1.5px, transparent 1.5px)`, backgroundSize: '28px 28px' } }}>
-                    <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg, transparent, ${colors.secondary.main}, transparent)` }} />
-                    <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                        <Stack direction="row" alignItems="center" gap={1} sx={{ mb: 3, cursor: 'pointer' }} onClick={() => navigate('/admissions')}>
-                            <ArrowForwardIcon sx={{ fontSize: 14, color: colors.secondary.main, transform: 'rotate(180deg)' }} />
-                            <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, color: colors.secondary.main, fontWeight: typography.fontWeight.semiBold }}>Back to Admissions</Typography>
-                        </Stack>
-                        <Stack direction="row" alignItems="center" gap={1.5} sx={{ mb: 2, animation: visible ? 'fq_fadeUp 0.6s ease both' : 'none' }}>
-                            <Box sx={{ width: 36, height: 2, bgcolor: colors.secondary.main }} />
-                            <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.xs, fontWeight: typography.fontWeight.bold, color: colors.secondary.main, letterSpacing: 3, textTransform: 'uppercase' }}>FAQs</Typography>
-                        </Stack>
-                        <Typography sx={{ fontFamily: typography.fontFamily.accent, fontSize: { xs: typography.fontSize['3xl'], md: '3.4rem' }, fontWeight: typography.fontWeight.bold, color: colors.text.light, lineHeight: 1.15, mb: 1.5, animation: visible ? 'fq_fadeUp 0.6s ease 0.1s both' : 'none' }}>
-                            Frequently Asked Questions
-                        </Typography>
-                        <Typography sx={{ fontFamily: typography.fontFamily.body, fontSize: typography.fontSize.base, color: 'rgba(255,255,255,0.55)', lineHeight: 1.9, maxWidth: 560, animation: visible ? 'fq_fadeUp 0.6s ease 0.2s both' : 'none' }}>
-                            Everything parents and students commonly ask about joining Preston. Can't find your answer? Contact our Admissions Office directly.
-                        </Typography>
-                    </Container>
-                </Box>
+                <PageHero
+                    label="FAQs"
+                    title="Frequently Asked Questions"
+                    description="Everything parents and students ask us most. If your question isn't here, contact us directly."
+                    backLabel="Back to Admissions"
+                    backPath="/admissions"
+                    visible={visible}
+                />
 
                 {/* FAQ Categories */}
                 <Box sx={{ bgcolor: colors.background.default, py: { xs: 8, md: 12 } }}>
