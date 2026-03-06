@@ -23,7 +23,7 @@ import CampusLifePage from '../pages/CampusLife';
 import StudentLifePage from '../pages/CampusLife/Studentlifepage';
 import HealthSafetyPage from '../pages/CampusLife/Healthsafetypage';
 import BoardingPage from '../pages/CampusLife/BoardingPage';
-import NewsDetailPage from '../pages/News/NewsDetailPage';
+import NewsDetailPage from '../pages/News/Newsdetailpage';
 
 const router = createBrowserRouter([
     {
