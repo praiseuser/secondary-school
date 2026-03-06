@@ -3,7 +3,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { colors, typography } from '../../../theme';
 import PageHero from '../../../components/common/PageHero';
 import SectionHeader from '../../../components/common/SectionHeader';
-import HoverCard from '../../../components/common/HoverCard';
+import HoverCard from '../../../components/common/Hovercard';
 import { useEffect, useRef, useState } from 'react';
 
 const keyframes = `
