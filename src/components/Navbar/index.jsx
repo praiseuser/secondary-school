@@ -13,16 +13,16 @@ const keyframes = `
 `;
 
 const Navbar = () => {
-  const [scrolled, setScrolled]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [topBarH, setTopBarH]       = useState(0);
+  const [topBarH, setTopBarH] = useState(0);
   const [bottomNavH, setBottomNavH] = useState(0);
-  const topBarRef    = useRef(null);
+  const topBarRef = useRef(null);
   const bottomNavRef = useRef(null);
 
   useEffect(() => {
     const measure = () => {
-      if (topBarRef.current)    setTopBarH(topBarRef.current.offsetHeight);
+      if (topBarRef.current) setTopBarH(topBarRef.current.offsetHeight);
       if (bottomNavRef.current) setBottomNavH(bottomNavRef.current.offsetHeight);
     };
     measure();
@@ -55,7 +55,6 @@ const Navbar = () => {
             md: scrolled ? 0 : 1,
           },
           transition: 'transform 0.38s ease, opacity 0.38s ease',
-          pointerEvents: { xs: 'auto', md: scrolled ? 'none' : 'auto' },
         }}
       >
         <TopBar socials={socials} onMobileOpen={() => setMobileOpen(true)} />
@@ -66,7 +65,7 @@ const Navbar = () => {
         sx={{
           position: 'fixed',
           top: {
-            xs: topBarH,                              
+            xs: topBarH,
             md: scrolled ? 0 : topBarH,
           },
           left: 0, right: 0,

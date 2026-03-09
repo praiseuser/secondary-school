@@ -1,4 +1,8 @@
-export const topLinks = ["Parents", "Students", "Staff"];
+export const topLinks = [
+  { label: "Parents", path: "/parents" },
+  { label: "Students", path: "/students" },
+  { label: "Staff", path: "/staff" },
+];
 
 export const socials = [
   { label: "Facebook", href: "#" },
